@@ -1,0 +1,195 @@
+<style>/* Reset CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Style untuk body */
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+    }
+    
+    /* Style untuk header */
+    header {
+        background-color: #1abc9c;
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    
+    nav ul {
+        list-style: none;
+    }
+    
+    nav ul li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+    
+    nav ul li:last-child {
+        margin-right: 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    nav ul li a:hover {
+        background-color: #16a085;
+    }
+    
+    /* Style untuk banner */
+    .banner {
+        background-image: url('https://i.imgur.com/3OS3DCW.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        text-align: center;
+    }
+    
+    .banner h2 {
+        font-size: 48px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    
+    .banner p {
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+    
+    .banner .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #1abc9c;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .banner .button:hover {
+        background-color: #16a085;
+    }
+    
+    /* Style untuk kupon */
+    .kupon {
+        background-color: #f1f1f1;
+        padding: 100px 0;
+    }
+    
+    .kupon h3 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .kupon-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .kupon-item {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+        width: 300px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .kupon-item h4 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .kupon-item p {
+        font-size: 18px;
+        color: #777;
+        margin-bottom: 20px;
+    }
+    
+    /* Style untuk footer */
+    footer {
+        background-color: #333;
+        padding: 20px;
+        text
+    </style>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ambil Kupon Buka Puasa Bersama</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>Ambil Kupon Buka Puasa Bersama</h1>
+			<nav>
+				<ul>
+					<li><a href="#">Beranda</a></li>
+					<li><a href="#">Kupon</a></li>
+					<li><a href="#">Tentang Kami</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<section class="banner">
+		<div class="container">
+			<h2>Ambil Kupon Buka Puasa Bersama Sekarang</h2>
+			<p>Kami menyediakan kupon makanan gratis untuk acara buka puasa bersama. Ambil sekarang sebelum kehabisan!</p>
+			<a href="ambil_kupon.php" class="button">Ambil Kupon</a>
+		</div>
+	</section>
+
+	<section class="kupon">
+		<div class="container">
+			<h3>Kupon Tersedia</h3>
+			<div class="kupon-container">
+				<?php include 'ambil_data_kupon.php'; ?>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2023 Ambil Kupon Buka Puasa Bersama</p>
+		</div>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
