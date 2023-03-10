@@ -66,3 +66,52 @@ $conn->close();
 	</form>
 </body>
 </html>
+
+<style>/* Style untuk form */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #ff9800;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #f57c00;
+}
+
+/* Style untuk halaman */
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}</style>
