@@ -51,10 +51,10 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Menukar Kupon</title>
+	<title>Sistem Penukaran Kupon</title>
 </head>
 <body>
-	<h1>Menukar Kupon</h1>
+	<h1>Sistem Penukaran Kupon</h1>
 	<form method="POST" action="proses_menukar_kupon.php">
 		<label for="nama">Nama:</label><br>
 		<input type="text" id="nama" name="nama"><br>
@@ -89,6 +89,10 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
 }
 
 button[type="submit"] {
