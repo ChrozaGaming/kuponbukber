@@ -132,29 +132,79 @@
     margin-top: 40px;
   }
 
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
   footer p {
     margin: 0;
     font-size: 18px;
+  }
+
+  /* Style for screens up to 768px wide (e.g. mobile devices) */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 24px;
+    }
+
+    header ul {
+      display: none;
+    }
+
+    header {
+      flex-direction: column;
+    }
+
+    header h1:nth-child(1) {
+      margin-top: 20px;
+    }
+
+    header h1:nth-child(2) {
+      margin-bottom: 20px;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav li {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
+
+    nav a {
+      font-size: 16px;
+    }
+
+    .kupon-item {
+      width: calc(100% / 2 - 20px);
+    }
   }
 </style>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Ambil Kupon Buka Puasa Bersama</title>
+  <title>Pengambilan Kupon Masjid Al Hikmah</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-  <header>
+  <header class="center">
     <div class="container">
       <h1>Ambil Kupon Buka Puasa Bersama</h1>
+      <br>
+      <h1>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;MasjidAl Hikmah Candi</h1>
+      <br>
       <nav>
-        <ul>
+        <ul>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
           <li><a href="#">Beranda</a></li>
-          <li><a href="#">Kupon</a></li>
+          <li><a href="login.php">Penukaran Kupon</a></li>
           <li><a href="#">Tentang Kami</a></li>
         </ul>
       </nav>
@@ -164,7 +214,7 @@
   <section class="banner">
     <div class="container">
       <h2>Ambil Kupon Buka Puasa Bersama Sekarang</h2>
-      <p>Kami menyediakan kupon makanan gratis untuk acara buka puasa bersama. Ambil sekarang sebelum kehabisan!</p>
+      <p>Kami menyediakan kupon makanan gratis untuk agenda rutin buka puasa bersama. Ambil sekarang sebelum kehabisan!</p>
       <a href="ambil_kupon.php" class="button">Ambil Kupon</a>
     </div>
   </section>
@@ -180,7 +230,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2023 Ambil Kupon Buka Puasa Bersama</p>
+      <p>&copy; 2023 Sistem Kupon Masjid Al Hikmah Candi</p>
     </div>
   </footer>
 

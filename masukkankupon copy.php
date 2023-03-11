@@ -9,29 +9,22 @@
 <body>
     <h1>Penukaran Kupon</h1>
     <?php
+    // Connect to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "bukberramadhan";
-
-    session_start();
-
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    if (!isset($_SESSION['username'])) {
-        header("Location: login.php");
-        exit;
-    }
-
-
-
-    // Connect to the database
-
     // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
     // Check connection
-    // session_start();
-
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
+    }
+    // to give permission pada file .php untuk mengunci, user haruslah login baru bisa mengkases halaman file ini
+    if (!isset($_SESSION['username'])) {
+        // Redirect to the login page
+        header('Location: login.php');
+        exit;
     }
 
     // Check if the form is submitted
@@ -71,15 +64,9 @@
         }
     }
 
-
-
     // Close the connection
     mysqli_close($conn);
     ?>
-
-    <form method="post" action="logout.php">
-        <input type="submit" name="logout" value="Logout Dari Admin">
-    </form>
 
     <style>
         body {
@@ -144,8 +131,7 @@
         <label for="kode_kupon">Kode Kupon:</label>
         <input type="text" id="kode_kupon" name="kode_kupon" placeholder="Masukkan kode kupon Anda">
         <br><br>
-        <input type="submit" name="submit" value="Tukar Kupon"><br><br>
-
+        <input type="submit" name="submit" value="Tukar Kupon">
     </form>
     <!-- Include JavaScript library for QR code scanning -->
     <script src="https://rawgit.com/LazarSoft/jsqrcode/master/src/qr_packed.js"></script>

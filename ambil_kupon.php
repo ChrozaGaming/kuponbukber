@@ -10,35 +10,77 @@
 
         h1 {
             text-align: center;
-            color: white;
+            color: #1883C4;
+            background-color: #ccc;
         }
 
         form {
-            background-color: white;
+            max-width: 500px;
+            margin: 0 auto;
             padding: 20px;
+            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 5px 5px 10px #888888;
-            margin: 20px auto;
-            width: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        input[type="text"] {
-            padding: 10px;
-            margin: 10px;
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         input[type="submit"] {
-            background-color: green;
-            color: white;
+            background-color: #5D5FEF;
+            color: #fff;
             padding: 10px 20px;
-            border-radius: 5px;
             border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
-            width: 100%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #fff;
+            color: #5D5FEF;
+            border: 2px solid #5D5FEF;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Media queries */
+        @media only screen and (max-width: 600px) {
+            form {
+                padding: 10px;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                margin-bottom: 10px;
+            }
+
+            input[type="submit"] {
+                margin-top: 20px;
+            }
         }
 
         p {
@@ -183,7 +225,16 @@
         <input type="text" id="no_hp" name="no_hp" placeholder="Masukkan no. HP Anda">
         <br><br>
         <input type="submit" name="submit" value="Ambil Kupon"><br><br><br>
-        <label for="nama">Lupa Simpan Kode Kupon/QRCode Kupon maka:</label>
+        <section class="kupon">
+            <div class="container">
+                <!-- <h3 style="color: #1883C4;">Kupon Yang Tersedia :</h3> -->
+                <div class="kupon-container">
+                    <?php include 'ambil_data_kupon.php'; ?>
+                </div>
+            </div>
+        </section>
+        <br>
+        <h2 for="nama">Lupa Simpan Kode Kupon/QRCode Kupon maka:</h2>
         <h2><b>Segera Lapor Panitia!</b></h2>
     </form>
 </body>

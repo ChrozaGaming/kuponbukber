@@ -10,7 +10,7 @@ $sisa_kupon = 350 - $total_kupon;
 if ($sisa_kupon > 0) {
 ?>
     <p style="text-align:center; color:green; margin: auto; width: 50%;">
-        Sisa kupon yang tersedia: <?php echo $sisa_kupon; ?> <b>Kupon</b>
+        Sisa kupon yang tersedia: <br> <?php echo $sisa_kupon; ?>&nbsp;<b>Kupon</b>
     </p>
 <?php
 } else {

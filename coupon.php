@@ -91,38 +91,71 @@ if (isset($_GET['kode_kupon'])) {
     // Get the URL of the coupon page with the coupon code as a parameter
     $coupon_url = "coupon.php?kode_kupon=" . urlencode($kode_kupon);
     ?>
-    <p>Ini adalah QR code untuk kupon Anda:</p>
+    <p>Ini adalah QR Code untuk kupon Anda:</p>
     <img src="<?php echo $qrCodePath; ?>" alt="QR Code">
-    <p>Silakan simpan kode kupon dan QR code ini untuk ditukarkan saat penukaran kupon.</p>
+    <p>Silakan simpan kode kupon dan QR Code ini untuk ditukarkan saat penukaran kupon.</p>
     <p><b>INGAT!!! KODE KUPON DAN QRCODE <u>❌TIDAK BOLEH!❌</u> DIBERITAHU/DISEBAR/DITUNJUKKAN/DILIHATKAN/ KEPADA SIAPAPUN</b></p>
     <p><b>KARENA BISA DISALAHGUNAKAN SAAT PENUKARAN KUPON</b></p>
-    <p>Untuk mengunduh QR code Anda, silakan klik <a href="<?php echo $qrCodePath; ?>" download="qrcode.png">di sini</a>.</p>
-    <?php
-    // Get name and phone number from the database based on the coupon code
-    $sql = "SELECT nama, no_hp FROM kupon WHERE kode_kupon = '$kode_kupon'";
-    $result = mysqli_query($conn, $sql);
+    <p>Untuk mengunduh QR Code Anda, silakan klik tombol➡️ <a href="<?php echo $qrCodePath; ?>" download="qrcode.png" class="button">Unduh QR Code</a>
+        <?php
+        // Get name and phone number from the database based on the coupon code
+        $sql = "SELECT nama, no_hp FROM kupon WHERE kode_kupon = '$kode_kupon'";
+        $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $nama = $row["nama"];
-            $no_hp = $row["no_hp"];
-    ?>
-            <p>Berikut Nama dan Nomor HP Anda:</p>
-            <p><?php echo $nama . " (" . $no_hp . ")"; ?></p>
-    <?php
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $nama = $row["nama"];
+                $no_hp = $row["no_hp"];
+        ?>
+    <p>Berikut Nama dan Nomor HP Anda:</p>
+    <p><?php echo $nama . " (" . $no_hp . ")"; ?></p>
+<?php
+            }
+        } else {
+            echo "Data kupon tidak ditemukan";
         }
-    } else {
-        echo "Data kupon tidak ditemukan";
+        mysqli_close($conn);
+?>
+<button class="button" onclick="printKupon()">Print Kupon</button>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<!-- Tambahkan tombol "Kembali" dan popup "Are you sure?" -->
+
+
+
+
+<script>
+    function printKupon() {
+        window.print();
     }
-    mysqli_close($conn);
-    ?>
-    <button onclick="printKupon()">Print Kupon</button>
+</script>
 
-    <script>
-        function printKupon() {
-            window.print();
-        }
-    </script>
+<a href="ambil_kupon.php" class="button" onclick="return confirmKembali()">Kembali</a>
+
+
+<script>
+    // Fungsi untuk menampilkan popup "Are you sure?"
+    function confirmKembali() {
+        swal({
+            title: "Are you sure?",
+            text: "Apakah anda sudah [Screenshot/Simpan] atau Download file gambar QRCODE nya dan print(*opsional). Jika belum maka Pilih button 'Batalkan'.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Konfirmasi",
+            cancelButtonText: "Batalkan",
+            closeOnConfirm: false
+        }, function() {
+            // Jika pengguna memilih "Konfirmasi", direct ke halaman "ambil_kupon.php"
+            window.location.href = "ambil_kupon.php";
+        });
+        return false; // Mencegah pengguna mengklik tombol "Kembali" sebelum memilih "Konfirmasi" atau "Batalkan"
+    }
+</script>
+
 </body>
 
 </html>
@@ -133,5 +166,25 @@ if (isset($_GET['kode_kupon'])) {
         height: auto;
         margin-top: 20px;
         border: 2px solid #666666;
+    }
+
+    .button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #5D5FEF;
+        color: #fff;
+        border: 2px solid #5D5FEF;
+        border-radius: 3px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .button:hover {
+        background-color: transparent;
+        color: #5D5FEF;
+        text-decoration: none;
     }
 </style>
