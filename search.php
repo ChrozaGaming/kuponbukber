@@ -29,7 +29,8 @@ if (mysqli_num_rows($result) > 0) {
     echo '<table>';
     echo '<tr><th>ID</th><th>Nama</th><th>Tanggal Dibuat (d-m-Y H:i:s)</th><th>Status</th></tr>';
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nama"] . "</td><td>" . date('d-m-Y H:i:s', strtotime($row["tanggal_dibuat"])) . "</td><td>" . $row["status"] . "</td></tr>";
+        echo '<tr><td>' . $row['id'] . '</td><td>' . $row['nama'] . '</td><td>' . date('d-m-Y', strtotime($row['tanggal_dibuat'])) . '</td><td>' . $row['status'] . '</td></tr>';
+
     }
     echo '</table>';
 } else {

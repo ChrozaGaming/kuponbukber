@@ -204,7 +204,7 @@
     <div class="container">
       <h1>Ambil Kupon Buka Puasa Bersama</h1>
       <br>
-      <h1>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;MasjidAl Hikmah Candi</h1>
+      <h1>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Masjid Al Hikmah Candi</h1>
       <br>
       <nav>
         <ul>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
@@ -219,7 +219,7 @@
   <section class="banner">
     <div class="container">
       <h2>Ambil Kupon Buka Puasa Bersama Sekarang</h2>
-      <p>Kami menyediakan kupon makanan gratis untuk agenda rutin buka puasa bersama. Ambil sekarang sebelum kehabisan!</p>
+      <p>Kami menyediakan kupon makanan gratis untuk agenda rutin buka puasa bersama pada bulan Ramadhan.<br> Ambil kupon sekarang sebelum kehabisan kuota kupon!</p>
       <a href="ambil_kupon.php" class="button">Ambil Kupon</a>
     </div>
   </section>
@@ -233,11 +233,6 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2023 Sistem Kupon Masjid Al Hikmah Candi</p>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>
@@ -256,26 +251,70 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
+
 // Query untuk menampilkan data dari tabel kupon
 $sql = "SELECT id, nama, tanggal_dibuat, status FROM kupon";
+$sql = "SELECT * FROM kupon";
 $result = mysqli_query($conn, $sql);
 
+// Query untuk menampilkan data dari tabel kupon
+
+
+// Tampilkan jumlah record
+
+
 // Jika data ditemukan, tampilkan dalam bentuk tabel
+
+$result = mysqli_query($conn, "SELECT * FROM kupon");
+
+//echo '<h2>Daftar Kupon</h2>';
+
+if (mysqli_num_rows($result) > 0) {
+//    echo '<table>';
+//    echo '<tr><th>ID</th><th>Nama</th><th>Tanggal Dibuat (y-m-d)</th><th>Status</th></tr>';
+//    while ($row = mysqli_fetch_assoc($result)) {
+//        echo '<tr><td>' . $row['id'] . '</td><td>' . $row['nama'] . '</td><td>' . $row['tanggal_dibuat'] . '</td><td>' . $row['status'] . '</td></tr>';
+//    }
+//    echo '</table>';
+//} else {
+//    echo '<p style="text-align:center; color:red; font-weight:bold;">&#10060; Belum ada yang mengambil kupon  &#10060;</p>';
+//
+}
+
+$total_rows = mysqli_num_rows($result);
+//echo "Jumlah baris pada tabel kupon: " . $total_rows;
 if (mysqli_num_rows($result) > 0) {
     echo '<form>';
     echo '<label for="search">Cari Nama:</label>';
     echo '<input type="text" id="search" name="search" placeholder="Masukkan nama...">';
     echo '</form>';
 
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Nama</th><th>Tanggal Dibuat (y-m-d)</th><th>Status</th></tr>";
+    echo '<div style="text-align: center; color: orange;">';
+    echo '<h2>Kupon Telah Diambil ' . $total_rows . ' Orang</h2>';
+    echo '</div>';
+
+    echo '<table>';
+    echo '<tr><th>ID</th><th>Nama</th><th>Tanggal Dibuat (y-m-d)</th><th>Status</th></tr>';
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nama"] . "</td><td>" . $row["tanggal_dibuat"] . "</td><td>" . $row["status"] . "</td></tr>";
+        echo '<tr><td>' . $row['id'] . '</td><td>' . $row['nama'] . '</td><td>' . $row['tanggal_dibuat'] . '</td><td>' . $row['status'] . '</td></tr>';
     }
-    echo "</table>";
+    echo '</table>';
 } else {
     echo '<p style="text-align:center; color:red; font-weight:bold;">&#10060; Belum ada yang mengambil kupon  &#10060;</p>';
 }
+
+if ($result) {
+    $row = mysqli_fetch_row($result);
+    if ($row) {
+        $total = $row[0];
+    } else {
+        $total = 0;
+    }
+} else {
+    $total = 0;
+}
+
+
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -294,6 +333,11 @@ if (mysqli_num_rows($result) > 0) {
         });
     });
 </script>
+<footer>
+    <div class="container">
+        <p>&copy; 2023 Sistem Kupon Masjid Al Hikmah Candi</p>
+    </div>
+</footer>
 </html>
 
 <style>
