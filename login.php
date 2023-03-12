@@ -107,6 +107,11 @@ mysqli_close($conn);
         color: #333;
     }
 
+    h1 {
+        text-align: center;
+        color: white;
+    }
+
     input {
         padding: 10px;
         font-size: 18px;

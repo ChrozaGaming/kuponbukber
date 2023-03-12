@@ -46,6 +46,11 @@
     text-align: center;
   }
 
+  h1 {
+      text-align: center;
+      color: white;
+  }
+
   .banner h2 {
     margin: 0;
     font-size: 48px;
@@ -237,4 +242,196 @@
   <script src="script.js"></script>
 </body>
 
+<h2 style="text-align: center; color: #219eff; text-shadow: 2px 2px 4px #888;">Berikut adalah kupon yang sudah terdaftar/diambil</h2>
+
+<?php
+// Koneksi ke database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bukberramadhan";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Cek koneksi
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+// Query untuk menampilkan data dari tabel kupon
+$sql = "SELECT id, nama, tanggal_dibuat, status FROM kupon";
+$result = mysqli_query($conn, $sql);
+
+// Jika data ditemukan, tampilkan dalam bentuk tabel
+if (mysqli_num_rows($result) > 0) {
+    echo '<form>';
+    echo '<label for="search">Cari Nama:</label>';
+    echo '<input type="text" id="search" name="search" placeholder="Masukkan nama...">';
+    echo '</form>';
+
+    echo "<table>";
+    echo "<tr><th>ID</th><th>Nama</th><th>Tanggal Dibuat (y-m-d)</th><th>Status</th></tr>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nama"] . "</td><td>" . $row["tanggal_dibuat"] . "</td><td>" . $row["status"] . "</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo '<p style="text-align:center; color:red; font-weight:bold;">&#10060; Belum ada yang mengambil kupon  &#10060;</p>';
+}
+?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search').on('input', function() {
+            var search_term = $(this).val();
+
+            $.ajax({
+                url: 'search.php',
+                type: 'POST',
+                data: { search: search_term },
+                success: function(response) {
+                    $('table').html(response);
+                }
+            });
+        });
+    });
+</script>
 </html>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    tbody tr td:first-child {
+        text-transform: uppercase;
+    }
+
+    tbody tr td:last-child {
+        text-transform: capitalize;
+    }
+
+    thead {
+        font-weight: bold;
+    }
+
+    tfoot {
+        font-style: italic;
+        background-color: #f2f2f2;
+    }
+
+    tfoot tr td:first-child {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    tfoot tr td:last-child {
+        text-align: center;
+    }
+
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        background-color: #2E8B57;
+    }
+
+    @media only screen and (max-width: 600px) {
+        table {
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+    }
+</style>
+
+<style>
+    form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    input[type="text"] {
+        font-size: 18px;
+        padding: 5px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px #007bff;
+    }
+
+    button[type="submit"] {
+        font-size: 18px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0062cc;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>

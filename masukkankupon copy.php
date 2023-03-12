@@ -104,6 +104,11 @@
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
 
+        /*h1 {*/
+        /*    text-align: center;*/
+        /*    color: white;*/
+        /*}*/
+
         input[type="submit"] {
             background-color: #4CAF50;
             color: white;

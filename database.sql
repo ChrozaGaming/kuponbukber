@@ -47,7 +47,7 @@ CREATE TABLE `kupon` (
   `kode_kupon` varchar(15) NOT NULL,
   `qrcode` longblob DEFAULT NULL,
   `tanggal_dibuat` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('tersedia','digunakan') NOT NULL DEFAULT 'tersedia'
+  `status` enum('kupon belum di tukarkan','digunakan') NOT NULL DEFAULT 'kupon belum di tukarkan'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

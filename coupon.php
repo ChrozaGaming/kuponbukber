@@ -81,6 +81,8 @@ if (isset($_GET['kode_kupon'])) {
     } else {
         $kode_kupon = '';
     }
+
+
     ?>
     <p>Ini adalah kode kupon Anda:</p>
     <p><?php echo $kode_kupon; ?></p>
@@ -99,21 +101,46 @@ if (isset($_GET['kode_kupon'])) {
     <p>Untuk mengunduh QR Code Anda, silakan klik tombol➡️ <a href="<?php echo $qrCodePath; ?>" download="qrcode.png" class="button">Unduh QR Code</a>
         <?php
         // Get name and phone number from the database based on the coupon code
-        $sql = "SELECT nama, no_hp FROM kupon WHERE kode_kupon = '$kode_kupon'";
+        $sql = "SELECT id, nama, no_hp FROM kupon WHERE kode_kupon = '$kode_kupon'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $nama = $row["nama"];
                 $no_hp = $row["no_hp"];
+        $id = $row["id"];
         ?>
     <p>Berikut Nama dan Nomor HP Anda:</p>
-    <p><?php echo $nama . " (" . $no_hp . ")"; ?></p>
-<?php
+        <p><?php echo $nama . " (" . $no_hp . ")";?> pada Nomor ID: <?php echo $row['id']; ?></p>
+
+
+    <?php
             }
         } else {
             echo "Data kupon tidak ditemukan";
         }
+
+    $count = 0; // initialize $count with a default value of zero
+    if ($count == 0) {
+
+        // get the total number of rows in the table
+        $result = mysqli_query($conn, "SELECT COUNT(*) FROM kupon");
+        $row = mysqli_fetch_row($result);
+        $total_rows = $row[0];
+
+        // check if the table is empty
+        if ($total_rows == 0) {
+            // reset the auto-increment value of the ID column to 1
+            mysqli_query($conn, "ALTER TABLE kupon AUTO_INCREMENT=1");
+            $count++; // increment the count variable
+        }
+    }
+    // display a message indicating whether the auto-increment value was reset or not
+    if ($count > 0) {
+//        echo "The auto-increment value of the ID column has been reset.";
+    } else {
+//        echo "The table is not empty, so the auto-increment value was not reset.";
+    }
         mysqli_close($conn);
 ?>
 <button class="button" onclick="printKupon()">Print Kupon</button>

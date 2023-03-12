@@ -89,6 +89,42 @@
             color: green;
             font-weight: bold;
         }
+
+        .button-3d {
+            display: inline-block;
+            position: relative;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px #000;
+            background-color: #007bff;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-3d {
+            /* Your button styles here */
+        }
+
+        .button-3d:hover {
+            background-color: #0062cc;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            transform: translate(1px, 1px);
+        }
+
+        .button-3d:active {
+            box-shadow: none;
+            transform: translate(0, 0);
+        }
+
     </style>
 </head>
 
@@ -112,6 +148,17 @@
     if (isset($_POST['nama']) && isset($_POST['no_hp'])) {
 
         $nama = mysqli_real_escape_string($conn, $_POST['nama']);
+
+        if (!ctype_upper($_POST['nama'])) {
+            echo "<p>Nama harus diawali huruf kapital</p>";
+            ?> <div class="button-container">
+                <button class="button-3d" onclick="window.location.href='ambil_kupon.php'">Input Ulang</button>
+            </div>
+            <?php
+            exit; ?>
+
+<?php
+    }
 
         // Make sure that no_hp is set before using it
         if (isset($_POST['no_hp'])) {
@@ -214,15 +261,39 @@
             // echo "<p>Silakan isi nama dan nomor HP Anda</p>";
         }
     }
+    $count = 0; // initialize $count with a default value of zero
+    if ($count == 0) {
+
+        // get the total number of rows in the table
+        $result = mysqli_query($conn, "SELECT COUNT(*) FROM kupon");
+        $row = mysqli_fetch_row($result);
+        $total_rows = $row[0];
+
+        // check if the table is empty
+        if ($total_rows == 0) {
+            // reset the auto-increment value of the ID column to 1
+            mysqli_query($conn, "ALTER TABLE kupon AUTO_INCREMENT=1");
+            $count++; // increment the count variable
+        }
+    }
+    // display a message indicating whether the auto-increment value was reset or not
+    if ($count > 0) {
+//        echo "The auto-increment value of the ID column has been reset.";
+    } else {
+//        echo "The table is not empty, so the auto-increment value was not reset.";
+    }
     ?>
+
+
+
 
     <!-- Coupon claim form -->
     <form action="" method="post">
         <label for="nama">Nama:</label>
-        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda">
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Lengkap Anda (Dengan Huruf Kapital Semuanya)
         <br><br>
         <label for="no_hp">No. HP:</label>
-        <input type="text" id="no_hp" name="no_hp" placeholder="Masukkan no. HP Anda">
+        <input type="text" id="no_hp" name="no_hp" placeholder="Masukkan no. HP Anda" pattern="[0-9]*">
         <br><br>
         <input type="submit" name="submit" value="Ambil Kupon"><br><br><br>
         <section class="kupon">

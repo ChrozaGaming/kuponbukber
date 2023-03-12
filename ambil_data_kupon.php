@@ -1,8 +1,8 @@
 <?php
 include 'koneksi.php';
 
-// Query untuk menghitung jumlah kupon tersedia
-$sql = "SELECT COUNT(*) AS total_kupon FROM kupon WHERE status = 'tersedia'";
+// Query untuk menghitung jumlah kupon kupon belum di tukarkan
+$sql = "SELECT COUNT(*) AS total_kupon FROM kupon WHERE status = 'kupon belum di tukarkan'";
 $result = mysqli_query($koneksi, $sql);
 $total_kupon = mysqli_fetch_assoc($result)['total_kupon'];
 $sisa_kupon = 350 - $total_kupon;
@@ -10,7 +10,7 @@ $sisa_kupon = 350 - $total_kupon;
 if ($sisa_kupon > 0) {
 ?>
     <p style="text-align:center; color:green; margin: auto; width: 50%;">
-        Sisa kupon yang tersedia: <br> <?php echo $sisa_kupon; ?>&nbsp;<b>Kupon</b>
+        Sisa kupon yang kupon belum di tukarkan: <br> <?php echo $sisa_kupon; ?>&nbsp;<b>Kupon</b>
     </p>
 <?php
 } else {
