@@ -71,6 +71,30 @@ if (isset($_POST['submit'])) {
     }
 }
 
+// Check if the coupon code has been redeemed before
+$sql = "SELECT * FROM kupontelahdireedem WHERE kode_kupon='$kode_kupon'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+//    echo "<p style='text-align: center; font-weight: bold; color: red;'>Kupon telah digunakan oleh orang tersebut</p>";
+    // Update the status of the coupon in the kupon table
+    $sql = "UPDATE kupon SET status='digunakan' WHERE kode_kupon='$kode_kupon'";
+    if (mysqli_query($conn, $sql)) {
+        echo "<p style='text-align: center; font-weight: bold; color: green;'>Status kupon telah diubah menjadi digunakan</p>";
+    } else {
+//        echo "Error updating record: " . mysqli_error($conn);
+    }
+} else {
+    // Insert the coupon code into the kupontelahdireedem table
+    $sql = "INSERT INTO kupontelahdireedem (kode_kupon) VALUES ('$kode_kupon')";
+    if (mysqli_query($conn, $sql)) {
+        echo "<p>Kupon berhasil diredeem. Kode kupon Anda adalah $kode_kupon</p>";
+        echo "<img src='data:image/png;base64," . base64_encode($qrCodeImage) . "' alt='QR Code' style='display: block; margin: auto; width: 80%; max-width: 500px;'>";
+    } else {
+        echo "Error inserting record: " . mysqli_error($conn);
+    }
+}
+
+
 
 
 // Close the connection
