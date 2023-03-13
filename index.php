@@ -2,48 +2,47 @@
   /* Style untuk form */
   /* Style untuk body */
   body {
-    background-color: #F7F7F7;
-    font-family: Arial, sans-serif;
+      background-color: #F7F7F7;
+      font-family: Arial, sans-serif;
   }
 
   /* Style untuk header */
   header {
-    background-color: #5D5FEF;
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      background-color: #5D5FEF;
+      color: #fff;
+      padding: 20px;
   }
 
   header h1 {
-    margin: 0;
-    font-size: 28px;
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
   }
 
   nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
   }
 
   nav li {
-    margin-left: 20px;
+      margin-left: 20px;
   }
 
   nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.125rem;
+      font-weight: 600;
   }
 
   /* Style untuk banner */
   .banner {
-    background-color: #FCD34D;
-    color: #333;
-    padding: 40px 20px;
-    text-align: center;
+      background-color: #FCD34D;
+      color: #333;
+      padding: 40px 20px;
+      text-align: center;
   }
 
   h1 {
@@ -52,85 +51,86 @@
   }
 
   .banner h2 {
-    margin: 0;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 1.2;
-    margin-bottom: 20px;
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
   }
 
   .banner p {
-    margin: 20px 0;
-    font-size: 24px;
-    line-height: 1.5;
+      margin: 20px 0;
+      font-size: 1.5rem;
+      line-height: 1.5;
   }
 
   .button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #5D5FEF;
-    color: #fff;
-    border: 2px solid #5D5FEF;
-    border-radius: 3px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    transition: all 0.3s ease-in-out;
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #5D5FEF;
+      color: #fff;
+      border: 2px solid #5D5FEF;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.125rem;
+      transition: all 0.3s ease-in-out;
   }
 
   .button:hover {
-    background-color: transparent;
-    color: #5D5FEF;
-    text-decoration: none;
+      background-color: transparent;
+      color: #5D5FEF;
+      text-decoration: none;
   }
 
   /* Style untuk kupon */
   .kupon {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
   }
 
 
   .kupon h3 {
-    margin: 0 0 20px 0;
-    font-size: 28px;
-    color: #5D5FEF;
+      margin: 0 0 20px 0;
+      font-size: 2.5rem;
+      color: #5D5FEF;
+      font-weight: 700;
   }
 
   .kupon-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
   }
 
   .kupon-item {
-    width: calc(100% / 3 - 20px);
-    margin: 10px;
-    padding: 20px;
-    background-color: #5D5FEF;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: #fff;
+      width: calc(100% / 3 - 20px);
+      margin: 10px;
+      padding: 20px;
+      background-color: #5D5FEF;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      color: #fff;
   }
 
   .kupon-item h4 {
-    margin: 0 0 10px 0;
-    font-size: 24px;
-    font-weight: bold;
+      margin: 0 0 10px 0;
+      font-size: 1.875rem;
+      font-weight: 700;
   }
 
   .kupon-item p {
-    font-size: 18px;
-    margin-bottom: 20px;
+      font-size: 1.125rem;
+      margin-bottom: 20px;
   }
 
   /* Style untuk footer */
   footer {
-    background-color: #333;
+      background-color: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -191,7 +191,7 @@
 </style>
 <!DOCTYPE html>
 <html>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <head>
   <title>Pengambilan Kupon Masjid Al Hikmah</title>
   <meta charset="UTF-8">
@@ -221,6 +221,10 @@
       <h2>Ambil Kupon Buka Puasa Bersama Sekarang</h2>
       <p>Kami menyediakan kupon makanan gratis untuk agenda rutin buka puasa bersama pada bulan Ramadhan.<br> Ambil kupon sekarang sebelum kehabisan kuota kupon!</p>
       <a href="ambil_kupon.php" class="button">Ambil Kupon</a>
+        <br>
+        <a href="http://192.168.1.16/wordpress" class="button">Kembali Ke Halaman Utama Masjid</a>
+
+
     </div>
   </section>
 
@@ -417,9 +421,7 @@ if ($result) {
             padding: 8px;
         }
     }
-</style>
 
-<style>
     form {
         display: flex;
         justify-content: center;
