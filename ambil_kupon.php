@@ -169,7 +169,8 @@ if (isset($_POST['submit'])) {
     if (!empty($nama)) {
         // Check if $nama contains only alphabets
         if (!ctype_alpha(str_replace(' ', '', $nama))) {
-            echo "Nama hanya boleh mengandung huruf.";
+            echo "<p style='text-align: center; font-weight: bold; color: #ff6666;'>Nama hanya boleh mengandung huruf.</p>";
+
         } else {
             // Convert $nama to all uppercase letters
             $nama = strtoupper($nama);
