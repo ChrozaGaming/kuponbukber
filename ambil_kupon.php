@@ -180,7 +180,7 @@ if (isset($_POST['submit'])) {
             // ...
         }
     } else {
-        echo "Nama tidak boleh kosong.";
+        echo "<p style='text-align: center; font-weight: bold; color: #ff6666;'>Nama tidak boleh kosong.</p>";
     }
 } else {
     $sql = "";
@@ -195,13 +195,13 @@ if (!empty($sql)) {
         $sql = "SELECT * FROM kupon WHERE no_hp='$no_hp'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
-            echo "<p>No. HP ini sudah terdaftar</p>";
+            echo "<p style='text-align: center; font-weight: bold; color: #ff6666;'>No hp sudah terdaftar.</p>";
         } else {
             // Check if the coupon limit has been reached
             $sql = "SELECT * FROM kupon";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) >= 350) {
-                echo "<p>Batas kupon sudah tercapai</p>";
+                echo "<p style='text-align: center; font-weight: bold; color: #ff6666;'>Batas limit kuota kupon sudah tercapai.</p>";
             } else {
                 // Generate a unique coupon code
                 $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -263,7 +263,7 @@ if (!empty($sql)) {
                     $sql = "SELECT * FROM kupon";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) >= 350) {
-                        echo "<p>Batas kupon sudah tercapai</p>";
+                        echo "<p>Batas limut kuota kupon sudah tercapai</p>";
                     } else {
                         if (isset($qrCodeImage)) {
                             $qrcode = mysqli_real_escape_string($conn, $qrCodeImage);
